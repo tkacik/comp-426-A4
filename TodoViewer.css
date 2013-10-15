@@ -153,6 +153,10 @@ form {
 	overflow: auto;
 }
 
+label {
+	white-space: nowrap;
+}
+
 /**************************************
 Coloring CSS
 **************************************/
@@ -205,11 +209,11 @@ input.invalid {
 	font-weight: bold;
 }
 
-tbody tr:nth-child(even) {
+.toolBody div:nth-child(even) {
 	background-color: #CCCCCC;
 }
 
-tbody tr:hover {
+.toolBody div:hover {
 	background-color: #AAAAAA;
 }
 
@@ -251,49 +255,6 @@ form {
 
 .actionBar > div > * {
 	margin: 3px;
-}
-
-.scenario {
-	width: 6em;	
-}
-
-.year {
-	width: 3em;
-}
-
-.dollar {
-	width: 5em;
-}
-
-.age {
-	width: 2em;
-}
-
-.roi {
-	width: 5em;
-}
-
-.col_year {
-	width: 10em;
-}
-
-.remove_button {
-	width: 4em;
-}
-
-label {
-	white-space: nowrap;
-}
-
-tr.retirement {
-	font-weight: bold;
-}
-
-.course {
-	width: 5em;
-}
-.submit {
-	float: right;
 }
 
 caption {
