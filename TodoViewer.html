@@ -12,7 +12,7 @@
 <!-- PAGE HEADER -->
 <div id="header_wrap" class="outer">
 	<header class="inner">
-	<h1>Retirement Planner</h1>
+	<h1>Todo List Manager</h1>
 	
 	</header>
 </div>
@@ -21,51 +21,30 @@
 <div id="main_content_wrap" class="outer">
 
 <div id="scenarios" class="tool inner">
-	<div class="toolHead"><h2>Retirement Scenarios</h2></div>
+	<div class="toolHead"><h2>Todos</h2></div>
 	<div class="toolBody">	
-		<form id="scenario_builder" class="actionBar" name="scenario_builder">
+		<form id="todo_control" class="actionBar" name="todo_control">
 			<div>
 				<label>
-					Scenario Name:
-					<input type="text" id="scenario_name" class="scenario" value="Scenario 1">
-				</label>				
-				<label>
-					Working ROI:
-					<input type="number" id="working_roi" class="roi" value="5">
-					%
+					Sort by:
+					<select name="sort">
+						<option value="TITLE">Title</option>
+						<option value="PROJECT">Project</option>
+						<option value="PRIORITY">Priority</option>
+						<option value="DUEDATE">Due Date</option>
+					</select>
 				</label>
-				<label>
-					Retired ROI:
-					<input type="number" id="retired_roi" class="roi" value="3">
-					%
-				</label>
-				<label>
-					Retirement Income: $
-					<input type="number" id="desired_retirement" class="dollar" value="50000">
-				</label>
-				<input id="create_scenario" type="submit" name="create" value="Create Scenario" class="action">
+				<label><input id="check-open" type="checkbox" name="open" checked >Open</label>
+				<label><input id="check-overdue" type="checkbox" name="overdue" >Overdue</label>
+				<label><input id="check-complete" type="checkbox" name="complete" >Completed</label>
 			</div>
 		</form>
-		<table>
-			<colgroup>
-				<col class="scenario">
-				<col class="roi">
-				<col class="roi">
-				<col class="dollar">
-				<col class="remove_button">
-			</colgroup>
-			<thead class="hidden">
-				<tr>
-					<td>Scenario</td>
-					<td>Working ROI (%)</td>
-					<td>Retired ROI (%)</td>
-					<td>Retirement ($/yr)</td>
-					<td></td>
-				</tr>
-			</thead>
-			<tbody id="scenario_list">
-			</tbody>
-		</table>
+		<div>
+			Example Title
+			<div>
+				Example Content
+			</div>
+		</div>
 	</div>
 </div>
 
