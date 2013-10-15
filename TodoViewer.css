@@ -126,7 +126,7 @@ body {
 
 .inner {
   position: relative;
-  max-width: 950px;
+  max-width: 740px;
   padding-right: 10px;
   padding-left: 10px;
   margin: 0 auto;
@@ -209,11 +209,15 @@ input.invalid {
 	font-weight: bold;
 }
 
-.toolBody div:nth-child(even) {
+.toolBody > div:nth-child(even) {
 	background-color: #CCCCCC;
 }
 
-.toolBody div:hover {
+/*.todo_body {
+	background-color: #FFFFFF;
+}*/
+
+.todo_head:hover {
 	background-color: #AAAAAA;
 }
 
@@ -225,14 +229,6 @@ table caption, table thead {
 /**************************************
 Content Formatting CSS
 **************************************/
-
-table {
-	width: 100%;
-}
-
-table td {
-	text-align: center;
-}
 
 .toolHead {
 	border-top-right-radius: 5px;
@@ -247,6 +243,8 @@ div.toolBody {
 	border-bottom: 1px solid #424242;
 	border-left: 1px solid #424242;
 	border-right: 1px solid #424242;
+	max-height: 1000px;
+	overflow: auto;
 }
 
 form {
@@ -257,14 +255,69 @@ form {
 	margin: 3px;
 }
 
-caption {
-	text-align: left;
-	padding-left: 15px;
-	font-weight: bold;
+.todo span {
+	padding: 5px;
 }
 
 input.action {
 	float: right;
 }
 
+.todo {
+	text-align:justify;
+}
 
+.todo_title {
+	font-size: 110%;
+	font-weight: bold;
+}
+
+div.todo span {
+	display: inline-block;
+	cursor: default;
+}
+
+div.overdue {
+	color: red;
+}
+
+div.complete > div.todo_head {
+	text-decoration: line-through;
+}
+
+div.hide_body > div.todo_body {
+	display: none;
+}
+
+div.todo span.todo_title {
+	display: block;
+}
+
+span.todo_id {
+	min-width: 6em;
+}
+
+span.todo_project {
+	min-width: 6em;
+}
+
+span.todo_duedate {
+	min-width: 6em;
+}
+
+span.todo_status {
+	min-width: 6em;
+}
+
+span.todo_edit {
+	min-width: 6em;
+}
+
+div.todo span.todo_note {
+	width: 90%;
+}
+
+.todo_note input {
+	width: 100%;
+	max-width: 90%;
+}
