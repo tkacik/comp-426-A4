@@ -1,0 +1,10 @@
+/* Put any CSS rules that you need here.
+   The one below is just there to make sure
+   that the link between the HTML and the CSS
+   is working. You can remove it if you want.
+*/
+
+
+body {
+    background-color: pink;
+}
