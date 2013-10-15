@@ -293,24 +293,40 @@ div.todo span.todo_title {
 	display: block;
 }
 
+.todo_title input {
+	width: 40%;
+}
+
 span.todo_id {
-	min-width: 6em;
+	min-width: 3em;
 }
 
 span.todo_project {
-	min-width: 6em;
+	min-width: 3em;
+}
+
+span.todo_priority {
+	min-width: 3em;
+}
+
+.todo_priority input {
+	width: 1.3em;
 }
 
 span.todo_duedate {
-	min-width: 6em;
+	min-width: 3em;
+}
+
+.todo_duedate input {
+	width: 4em;
 }
 
 span.todo_status {
-	min-width: 6em;
+	min-width: 3em;
 }
 
 span.todo_edit {
-	min-width: 6em;
+	min-width: 3em;
 }
 
 div.todo span.todo_note {
