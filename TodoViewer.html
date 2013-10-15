@@ -3,7 +3,7 @@
   <head>
     <title>Todo Item Viewer</title>
     <link rel="stylesheet" type="text/css" href="TodoViewer.css">
-    <script src="/Courses/comp426-f13/jquery-1.10.2.js"></script>
+    <script src="http://www.cs.unc.edu/Courses/comp426-f13/jquery-1.10.2.js"></script>
     <script src="TodoItem.js"></script>
     <script src="TodoViewer.js"></script>
 </head>
@@ -27,7 +27,7 @@
 			<div>
 				<label>
 					Sort by:
-					<select name="sort">
+					<select id="sort" name="sort">
 						<option value="TITLE">Title</option>
 						<option value="PROJECT">Project</option>
 						<option value="PRIORITY">Priority</option>
@@ -45,8 +45,9 @@
 			</div>
 			<div class="todo_body">
 				<span class="todo_id">ID: 10101</span>
-				<span class="todo_project"> Project: COMP 426</span>
-				<span class="todo_duedate"> Due: October 22</span>
+				<span class="todo_project">Project: COMP 426</span>
+				<span class="todo_duedate">Due: October 22</span>
+				<span class="todo_priority">1</span>
 				<span class="todo_status">Status: Complete</span>
 				<span class="todo_edit"><input type="submit" value="Edit"></span>
 				<span class="todo_note">Must complete this assignment before the due date!</span>
@@ -60,6 +61,7 @@
 				<span class="todo_id">ID: 10101</span>
 				<span class="todo_project"> Project: COMP 426</span>
 				<span class="todo_duedate"> Due: October 22</span>
+				<span class="todo_priority">1</span>
 				<span class="todo_status">Status: Complete</span>
 				<span class="todo_edit"><input type="submit" value="Edit"></span>
 				<span class="todo_note">Must complete this assignment before the due date!</span>
@@ -73,6 +75,7 @@
 				<span class="todo_id">ID: 10101</span>
 				<span class="todo_project"> Project: COMP 426</span>
 				<span class="todo_duedate"> Due: October 22</span>
+				<span class="todo_priority">1</span>
 				<span class="todo_status">Status: Complete</span>
 				<span class="todo_edit"><input type="submit" value="Edit"></span>
 				<span class="todo_note">Must complete this assignment before the due date!</span>
@@ -86,6 +89,7 @@
 				<span class="todo_id">ID: 10101</span>
 				<span class="todo_project"> Project: COMP 426</span>
 				<span class="todo_duedate"> Due: October 22</span>
+				<span class="todo_priority">Priority: 1</span>
 				<span class="todo_status">Status: Complete</span>
 				<span class="todo_edit"><input type="submit" value="Edit"></span>
 				<span class="todo_note">Must complete this assignment before the due date!</span>
@@ -97,6 +101,7 @@
 				<span class="todo_id">ID: 10101</span>
 				<span class="todo_project"><label>Project: <input class="todo_project" type="text"></label></span>
 				<span class="todo_duedate"><label>Due: <input class="todo_duedate" type="date"></label></span>
+				<span class="todo_priority"><label>Priority: <input class="todo_status" type="number"></label></span>
 				<span class="todo_status"><label>Complete: <input class="todo_status" type="checkbox"></label></span>
 				<span class="todo_edit"><input type="submit" value="Done"></span>
 				<span class="todo_note"><label>Note: <input type="text"></label></span>
