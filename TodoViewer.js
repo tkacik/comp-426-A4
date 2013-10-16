@@ -18,6 +18,8 @@ $(document).ready(function() {
 	$('#todo_tool').on('click', '.todo_head', null, toggleBody);
 	$('#new-todo').on('click', newTodo);
 	buildList();
+	showOpen();
+	showComplete();
 
 });
 
@@ -34,11 +36,17 @@ var sortList = function(e) {
 };
 
 var showOpen = function(e) {
-	todo("showOpen");
+	if($('#check-open').is(':checked')){
+		$('.todo').not('.complete').removeClass('hidden');
+	} else $('.todo').not('.complete').addClass('hidden');
+
 };
 
 var showComplete = function(e) {
-	todo("showComplete");
+	if($('#check-complete').is(':checked')){
+		$('div.todo.complete').removeClass('hidden');
+	} else $('div.todo.complete').addClass('hidden');
+
 };
 
 var buildList = function(e) {
