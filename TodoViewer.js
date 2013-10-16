@@ -53,11 +53,18 @@ var buildList = function(e) {
 		var todoBody = $("<div></div>").addClass("todo_body");
 		todoBody.append($("<span></span>").addClass("todo_index").attr("style","display: none").text(i));
 		todoBody.append($("<span></span>").addClass("todo_edit").append('<input type="submit" value="Edit">'));
-		todoBody.append($("<span></span>").addClass("todo_id").text("ID: " + A[i].id));
-		todoBody.append($("<span></span>").addClass("todo_project").text("Project: " + A[i].project));
-		todoBody.append($("<span></span>").addClass("todo_duedate").text("Due: " + A[i].due_date));
-		todoBody.append($("<span></span>").addClass("todo_priority").text("Priority: " + A[i].priority));
-		todoBody.append($("<span></span>").addClass("todo_status").text("status: " + A[i].complete));
+		todoBody.append($("<span></span>").addClass("todo_id").append("<strong>ID: </strong>").append(A[i].id));
+		todoBody.append($("<span></span>").addClass("todo_project").append("<strong>Project: </strong>").append(A[i].project));
+		
+		var duedate;
+		if (A[i].due_date == null)
+			duedate = "none";
+		else {
+			duedate = A[i].due_date.toUTCString().substring(0,16);
+		}
+		todoBody.append($("<span></span>").addClass("todo_duedate").append("<strong>Due: </strong>").append(duedate));
+		todoBody.append($("<span></span>").addClass("todo_priority").append("<strong>Priority: </strong>").append(A[i].priority));
+		todoBody.append($("<span></span>").addClass("todo_status").append("<strong>Status: </strong>").append(A[i].complete));
 		todoBody.append($("<span></span>").addClass("todo_note").text(A[i].note));
 		
 		toolBody.append(nextTodo.append(todoBody));
