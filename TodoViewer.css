@@ -263,18 +263,9 @@ input.action {
 	float: right;
 }
 
-.todo {
-	text-align:justify;
-}
-
 .todo_title {
 	font-size: 110%;
 	font-weight: bold;
-}
-
-div.todo span {
-	display: inline-block;
-	cursor: default;
 }
 
 div.overdue {
@@ -291,49 +282,58 @@ div.hide_body > div.todo_body {
 
 div.todo span.todo_title {
 	display: block;
+	text-align: left;
 }
 
 .todo_title input {
 	width: 40%;
 }
 
+div.todo span {
+	display: table-cell;
+	cursor: default;
+	text-align: center;
+}
+
 span.todo_id {
-	min-width: 3em;
+	min-width: 4em;
 }
 
 span.todo_project {
-	min-width: 3em;
+	min-width: 8em;
 }
 
 span.todo_priority {
-	min-width: 3em;
-}
-
-.todo_priority input {
-	width: 1.3em;
+	min-width: 5em;
 }
 
 span.todo_duedate {
+	min-width: 5em;
+}
+
+span.todo_status {
+	min-width: 5em;
+}
+
+span.todo_edit {
 	min-width: 3em;
+	float: right;
+}
+
+div.todo span.todo_note {
+	width: 90%;
+	display: block;
+}
+
+.todo_note input {
+	width: 100%;
+	max-width: 90%;
 }
 
 .todo_duedate input {
 	width: 4em;
 }
 
-span.todo_status {
-	min-width: 3em;
-}
-
-span.todo_edit {
-	min-width: 3em;
-}
-
-div.todo span.todo_note {
-	width: 90%;
-}
-
-.todo_note input {
-	width: 100%;
-	max-width: 90%;
+.todo_priority input {
+	width: 1.3em;
 }
