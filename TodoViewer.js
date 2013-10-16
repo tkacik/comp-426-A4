@@ -13,8 +13,8 @@ $(document).ready(function() {
 	$('#sort').on('change', sortList);
 	$('#check-open').on('change', showOpen);
 	$('#check-complete').on('change', showComplete);
-	$('.todo_body').on('click','input', null, editTodo);
-	$('.todo_form').on('submit', uneditTodo);
+	$('#todo_tool').on('click','.todo_body input', null, editTodo);
+	$('#todo_tool').on('submit', '.todo_form', null, uneditTodo);
 	$('#todo_tool').on('click', '.todo_head', null, toggleBody);
 	$('#new-todo').on('click', newTodo);
 	buildList();
@@ -59,7 +59,10 @@ var buildList = function(e) {
 };
 
 var editTodo = function(e) {
-	todo("edit todo");
+	var thisTodo = $(this).parents(".todo");
+	var j = $(this).parent().siblings(".todo_index").text();
+	buildForm(thisTodo, j);
+	e.preventDefault();
 };
 
 var uneditTodo = function(e) {
@@ -114,7 +117,7 @@ var buildForm = function(thisTodo, i) {
 	thisTodo.empty();
 	var A = TodoItem.all;
 	var todoForm = $("<form></form>").addClass("todo_form");
-	todoForm.append($("<span></span>").addClass("todo_title").append('<label>Title: </label>').append('<input class="todo_title" type="text">').val(A[i].title));
+	todoForm.append($("<span></span>").addClass("todo_title").append('<label></label>').append("Title: ", $('<input class="todo_title" type="text">').val(A[i].title)));
 	todoForm.append($("<span></span>").addClass("todo_index").attr("style","display: none").text(i));
 	todoForm.append($("<span></span>").addClass("todo_edit").append('<input type="submit" value="Done">'));
 	todoForm.append($("<span></span>").addClass("todo_id").append("<strong>ID: </strong>").append(A[i].id));
