@@ -213,10 +213,6 @@ input.invalid {
 	background-color: #CCCCCC;
 }
 
-/*.todo_body {
-	background-color: #FFFFFF;
-}*/
-
 .todo_head:hover {
 	background-color: #AAAAAA;
 }
@@ -323,6 +319,7 @@ span.todo_edit {
 div.todo span.todo_note {
 	width: 90%;
 	display: block;
+	text-align: left;
 }
 
 .todo_note input {
