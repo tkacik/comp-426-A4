@@ -59,12 +59,13 @@ var buildList = function(e) {
 		var duedate;
 		if (A[i].due_date == null)
 			duedate = "none";
-		else {
-			duedate = A[i].due_date.toUTCString().substring(0,16);
-		}
+		else { duedate = A[i].due_date.toUTCString().substring(0,16);}
 		todoBody.append($("<span></span>").addClass("todo_duedate").append("<strong>Due: </strong>").append(duedate));
 		todoBody.append($("<span></span>").addClass("todo_priority").append("<strong>Priority: </strong>").append(A[i].priority));
-		todoBody.append($("<span></span>").addClass("todo_status").append("<strong>Status: </strong>").append(A[i].complete));
+		
+		var complete = "Incomplete";
+		if (A[i].complete) complete = "Complete";
+		todoBody.append($("<span></span>").addClass("todo_status").append("<strong>Status: </strong>").append(complete));
 		todoBody.append($("<span></span>").addClass("todo_note").text(A[i].note));
 		
 		toolBody.append(nextTodo.append(todoBody));
