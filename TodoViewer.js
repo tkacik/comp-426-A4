@@ -47,6 +47,7 @@ var buildList = function(e) {
 		nextTodo.append($("<div></div>").addClass("todo_head").append($("<span></span>").addClass("todo_title").text(A[i].title)));
 		
 		var todoBody = $("<div></div>").addClass("todo_body");
+		todoBody.append($("<span></span>").addClass("todo_index").attr("style","display: none").text(i));
 		todoBody.append($("<span></span>").addClass("todo_edit").append('<input type="submit" value="Edit">'));
 		todoBody.append($("<span></span>").addClass("todo_id").text("ID: " + A[i].id));
 		todoBody.append($("<span></span>").addClass("todo_project").text("Project: " + A[i].project));
