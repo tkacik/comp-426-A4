@@ -73,7 +73,7 @@ var toggleBody = function(e) {
 };
 
 var newTodo = function(e) {
-	new TodoItem(" ", " ", " ", new Date(), " ", false);
+	new TodoItem("title", "note", "project", null, "5", false);
 	$("#todo_tool div.toolBody").prepend(buildForm($("<div></div>").addClass("todo"), TodoItem.all.length-1));
 	e.preventDefault();
 };
@@ -91,7 +91,7 @@ var buildTodo = function(thisTodo, i) {
 	var duedate;
 	if (A[i].due_date == null)
 		duedate = "none";
-	else { 
+	else {
 		duedate = A[i].due_date.toUTCString().substring(0,16);
 		if (!A[i].complete && new Date() > A[i].due_date)
 			thisTodo.addClass("overdue");
@@ -111,6 +111,37 @@ var buildTodo = function(thisTodo, i) {
 }
 
 var buildForm = function(thisTodo, i) {
-	thisTodo.append($("<div></div>").addClass("todo_head").append($("<span></span>").addClass("todo_title").text(TodoItem.all[i].title)));
-	return thisTodo;
+	thisTodo.empty();
+	var A = TodoItem.all;
+	var todoForm = $("<form></form>").addClass("todo_form");
+	todoForm.append($("<span></span>").addClass("todo_title").append('<label>Title: </label>').append('<input class="todo_title" type="text">').val(A[i].title));
+	todoForm.append($("<span></span>").addClass("todo_index").attr("style","display: none").text(i));
+	todoForm.append($("<span></span>").addClass("todo_edit").append('<input type="submit" value="Done">'));
+	todoForm.append($("<span></span>").addClass("todo_id").append("<strong>ID: </strong>").append(A[i].id));
+	todoForm.append($("<span></span>").addClass("todo_project").append('<label></label>').append("<strong>Project: </strong>",$('<input class="todo_project" type="text">').val(A[i].project)));
+	
+	var duedate;
+	if (A[i].due_date == null)
+		duedate = "none";
+	else {
+		duedate = A[i].due_date.toUTCString().substring(0,16);
+	}
+	todoForm.append($("<span></span>").addClass("todo_duedate").append('<label></label>').append("<strong>Due: </strong>", $('<input class="todo_project" type="text">').val(duedate)));
+	
+	priority = $("<select class='todo_priority'></select>");
+	for (var p=1; p<11; p++){
+		priority.append($("<option></option>").val(p).text(p));
+	}
+	priority.val(A[i].priority);
+	
+	todoForm.append($("<span></span>").addClass("todo_priority").append('<label></label>').append("<strong>Priority: </strong>").append(priority));
+	
+	var complete = $("<input class='todo_status' type='checkbox'>");
+	if (A[i].complete) {
+		complete.addClass('checked');
+	}
+	todoForm.append($("<span></span>").addClass("todo_status").append('<label></label>').append("<strong>Complete: </strong>").append(complete));
+	todoForm.append($("<span></span>").addClass("todo_note").append('<label></label>').append("<strong>Note: </strong>", $('<input class="todo_note" type="text">').val(A[i].note)));	
+
+	return thisTodo.append(todoForm);
 }
