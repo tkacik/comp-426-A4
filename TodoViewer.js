@@ -21,6 +21,10 @@ $(document).ready(function() {
 
 });
 
+/*************************************
+Additional Methods
+**************************************/
+
 var todo = function(s) {
 	alert("TODO: " + s);
 };
