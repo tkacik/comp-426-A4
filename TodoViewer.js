@@ -51,7 +51,8 @@ var uneditTodo = function(e) {
 };
 
 var toggleBody = function(e) {
-	todo("toggle visibility of Todo body.")
+	$(this).parent().toggleClass("hide_body");
+	
 };
 
 var newTodo = function(e) {
