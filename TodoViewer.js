@@ -27,12 +27,8 @@ $(document).ready(function() {
 Additional Methods
 **************************************/
 
-var todo = function(s) {
-	alert("TODO: " + s);
-};
-
 var sortList = function(e) {
-	todo("SORT");
+	alert("SORT");
 };
 
 var showOpen = function(e) {
@@ -66,8 +62,27 @@ var editTodo = function(e) {
 };
 
 var uneditTodo = function(e) {
-	todo("submit todo changes");
+	var thisTodo = $(this).parents(".todo");
+	var j = $(this).find(".todo_index").text();
+	if(todoUpdate(thisTodo, j))
+		buildTodo(thisTodo, j);
 	e.preventDefault();
+};
+
+var todoUpdate = function(thisTodo, i){
+	var todoItem = TodoItem.all[i];
+	
+	todoItem.title = thisTodo.find('input.todo_title').val();
+	todoItem.note = thisTodo.find('input.todo_note').val();
+	//todoItem.due_date = new Date(thisTodo.find('input.todo_duedate').val());
+	alert("date not functional");
+	if(thisTodo.find('input.todo_status').is(':checked'))
+		todoItem.complete = true;
+	else todoItem.complete = false;
+	todoItem.priority = thisTodo.find('select.todo_priority').val();
+	todoItem.project = thisTodo.find('input.todo_project').val();
+	
+	return true;
 };
 
 var toggleBody = function(e) {
@@ -82,6 +97,7 @@ var newTodo = function(e) {
 };
 
 var buildTodo = function(thisTodo, i) {
+	thisTodo.empty();
 	var A = TodoItem.all;
 	thisTodo.append($("<div></div>").addClass("todo_head").append($("<span></span>").addClass("todo_title").text(A[i].title)));
 	
@@ -141,7 +157,7 @@ var buildForm = function(thisTodo, i) {
 	
 	var complete = $("<input class='todo_status' type='checkbox'>");
 	if (A[i].complete) {
-		complete.addClass('checked');
+		complete.attr('checked', true);
 	}
 	todoForm.append($("<span></span>").addClass("todo_status").append('<label></label>').append("<strong>Complete: </strong>").append(complete));
 	todoForm.append($("<span></span>").addClass("todo_note").append('<label></label>').append("<strong>Note: </strong>", $('<input class="todo_note" type="text">').val(A[i].note)));	
