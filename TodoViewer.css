@@ -264,7 +264,7 @@ input.action {
 	font-weight: bold;
 }
 
-div.overdue {
+div.overdue > div.todo_head {
 	color: red;
 }
 
