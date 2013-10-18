@@ -18,8 +18,6 @@ $(document).ready(function() {
 	$('#todo_tool').on('click', '.todo_head', null, toggleBody);
 	$('#new-todo').on('click', newTodo);
 	buildList();
-	showOpen();
-	showComplete();
 
 });
 
@@ -28,7 +26,35 @@ Additional Methods
 **************************************/
 
 var sortList = function(e) {
-	alert("SORT");
+	if($('#sort').val() == "TITLE"){
+		TodoItem.all.sort(function(a,b) {
+			var x = a.title.toLowerCase();
+			var y = b.title.toLowerCase();
+			return x < y ? -1 : x > y ? 1 : 0;
+		});
+	};
+	if($('#sort').val() == "PROJECT"){
+		TodoItem.all.sort(function(a,b) {
+			var x = a.project.toLowerCase();
+			var y = b.project.toLowerCase();
+			return x < y ? -1 : x > y ? 1 : 0;
+		});
+	};
+	if($('#sort').val() == "PRIORITY"){
+		TodoItem.all.sort(function(a,b) {
+			var x = a.priority;
+			var y = b.priority;
+			return x - y;
+		});
+	};
+	if($('#sort').val() == "DUEDATE") {
+		TodoItem.all.sort(function(a,b) {
+			var x = a.duedate;
+			var y = b.duedate;
+			return x - y;
+		});
+	};
+	buildList();
 };
 
 var showOpen = function(e) {
@@ -52,6 +78,9 @@ var buildList = function(e) {
 	for (var i=0; i<TodoItem.all.length; i++) {
 		toolBody.append(buildTodo($("<div></div>").addClass("todo"),i));
 	}
+
+	showOpen();
+	showComplete();
 };
 
 var editTodo = function(e) {
