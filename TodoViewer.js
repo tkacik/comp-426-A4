@@ -76,7 +76,7 @@ var buildList = function(e) {
 	toolBody.children("div").remove();
 	
 	for (var i=0; i<TodoItem.all.length; i++) {
-		toolBody.append(buildTodo($("<div></div>").addClass("todo"),i));
+		toolBody.append(buildTodo($("<div></div>").addClass("todo hide_body"),i));
 	}
 
 	showOpen();
