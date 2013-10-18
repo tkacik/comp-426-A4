@@ -137,12 +137,16 @@ var buildTodo = function(thisTodo, i) {
 	todoBody.append($("<span></span>").addClass("todo_project").append("<strong>Project: </strong>").append(A[i].project));
 	
 	var duedate;
-	if (A[i].due_date == null)
+	if (A[i].due_date == null) {
 		duedate = "none";
+		thisTodo.removeClass("overdue");
+	}
 	else {
 		duedate = A[i].due_date.toUTCString().substring(0,16);
 		if (!A[i].complete && new Date() > A[i].due_date)
 			thisTodo.addClass("overdue");
+		else thisTodo.removeClass("overdue");
+
 	}
 	todoBody.append($("<span></span>").addClass("todo_duedate").append("<strong>Due: </strong>").append(duedate));
 	todoBody.append($("<span></span>").addClass("todo_priority").append("<strong>Priority: </strong>").append(A[i].priority));
@@ -151,7 +155,7 @@ var buildTodo = function(thisTodo, i) {
 	if (A[i].complete) {
 		complete = "Complete";
 		thisTodo.addClass("complete");
-	}
+	} else thisTodo.removeClass("complete");
 	todoBody.append($("<span></span>").addClass("todo_status").append("<strong>Status: </strong>").append(complete));
 	todoBody.append($("<span></span>").addClass("todo_note").text(A[i].note));	
 
