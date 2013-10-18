@@ -49,8 +49,12 @@ var sortList = function(e) {
 	};
 	if($('#sort').val() == "DUEDATE") {
 		TodoItem.all.sort(function(a,b) {
-			var x = a.duedate;
-			var y = b.duedate;
+			var x = a.due_date;
+			var y = b.due_date;
+			if (x == null)
+				return 1;
+			if (y == null)
+				return -1;
 			return x - y;
 		});
 	};
