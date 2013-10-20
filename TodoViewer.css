@@ -328,7 +328,7 @@ div.todo span.todo_note {
 }
 
 .todo_duedate input {
-	width: 4em;
+	width: 6em;
 }
 
 .todo_priority input {
