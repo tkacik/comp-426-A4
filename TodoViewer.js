@@ -107,8 +107,7 @@ var todoUpdate = function(thisTodo, i){
 	
 	todoItem.title = thisTodo.find('input.todo_title').val();
 	todoItem.note = thisTodo.find('input.todo_note').val();
-	//todoItem.due_date = new Date(thisTodo.find('input.todo_duedate').val());
-	alert("date not functional");
+	todoItem.due_date = parseDate(thisTodo.find('input.todo_duedate').val());
 	if(thisTodo.find('input.todo_status').is(':checked'))
 		todoItem.complete = true;
 	else todoItem.complete = false;
@@ -117,6 +116,44 @@ var todoUpdate = function(thisTodo, i){
 	
 	return true;
 };
+
+var parseDate = function(input) {
+	if (input == "none")
+		return null;
+	input = input.split("/");
+	if (input.length == 1)
+		input = input[0].split(" ");
+	if(input.length < 3)
+		return new Date("invalid");
+	var year = input[2];
+	if(!isNaN(year) && year < 100)
+		year = parseInt(year) + 2000;
+	var month = input[1];
+	if (isNaN(month))
+		month = convertMonth(month);
+	else month--;
+	var day = input[0];
+	
+	return new Date(year, month, day, 0, 0, 0, 0);
+}
+
+var convertMonth = function(monthString) {
+	switch(monthString.toLowerCase()){
+	case "jan": return 0;
+	case "feb": return 1;
+	case "mar": return 2;
+	case "apr": return 3;
+	case "may": return 4;
+	case "jun": return 5;
+	case "jul": return 6;
+	case "aug": return 7;
+	case "sep": return 8;
+	case "oct": return 9;
+	case "nov": return 10;
+	case "dec": return 11;
+	default: return null;
+	}
+}
 
 var toggleBody = function(e) {
 	$(this).parent().toggleClass("hide_body");
@@ -179,11 +216,13 @@ var buildForm = function(thisTodo, i) {
 	var duedate;
 	if (A[i].due_date == null)
 		duedate = "none";
-	else {
-		duedate = A[i].due_date.toUTCString().substring(0,16);
+	else if (A[i].due_date == "Invalid Date"){
+		duedate = "dd mm yyyy";
+	}else {
+		duedate = A[i].due_date.toUTCString().substring(5,16);
 	}
-	todoForm.append($("<span></span>").addClass("todo_duedate").append('<label></label>').append("<strong>Due: </strong>", $('<input class="todo_project" type="text">').val(duedate)));
-	
+	todoForm.append($("<span></span>").addClass("todo_duedate").append('<label></label>').append("<strong>Due: </strong>", $('<input class="todo_duedate datepicker" type="text">').val(duedate)));
+
 	priority = $("<select class='todo_priority'></select>");
 	for (var p=1; p<11; p++){
 		priority.append($("<option></option>").val(p).text(p));
